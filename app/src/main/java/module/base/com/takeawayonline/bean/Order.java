@@ -8,24 +8,13 @@ public class Order {
 
     private String orderNo;
     private String userNo;
-    private String menuNO;
-    private int orderNum;
-    private int orderPrce;
+    private String buyNo;
     private String createTime;
 
-    public Order(String orderNo, String userNo, String menuNO, int orderNum, int orderPrce) {
+    public Order(String orderNo, String userNo, String buyNo, String createTime) {
         this.orderNo = orderNo;
         this.userNo = userNo;
-        this.menuNO = menuNO;
-        this.orderNum = orderNum;
-        this.orderPrce = orderPrce;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
+        this.buyNo = buyNo;
         this.createTime = createTime;
     }
 
@@ -45,27 +34,19 @@ public class Order {
         this.userNo = userNo;
     }
 
-    public String getMenuNO() {
-        return menuNO;
+    public String getBuyNo() {
+        return buyNo;
     }
 
-    public void setMenuNO(String menuNO) {
-        this.menuNO = menuNO;
+    public void setBuyNo(String buyNo) {
+        this.buyNo = buyNo;
     }
 
-    public int getOrderNum() {
-        return orderNum;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setOrderNum(int orderNum) {
-        this.orderNum = orderNum;
-    }
-
-    public int getOrderPrce() {
-        return orderPrce;
-    }
-
-    public void setOrderPrce(int orderPrce) {
-        this.orderPrce = orderPrce;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }

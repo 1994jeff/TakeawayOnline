@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/commentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已评论订单"
+            android:textSize="22dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="10dp"/>
+        <ListView
+            android:id="@+id/list_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/uncommentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未评论订单"
+            android:textSize="22dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="10dp"/>
+        <ListView
+            android:id="@+id/list_uncomment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

@@ -8,15 +8,26 @@ public class Menu {
 
     private String vegetTableNo;
     private String vegetTableName;
+    private String vegetTableDes;
     private String vegetTablePic;
     private int vegetTablePirce;
     private String createTime;
 
-    public Menu(String vegetTableNo, String vegetTableName, String vegetTablePic, int vegetTablePirce) {
+    public Menu(String vegetTableNo, String vegetTableName, String vegetTableDes, String vegetTablePic, int vegetTablePirce, String createTime) {
         this.vegetTableNo = vegetTableNo;
         this.vegetTableName = vegetTableName;
+        this.vegetTableDes = vegetTableDes;
         this.vegetTablePic = vegetTablePic;
         this.vegetTablePirce = vegetTablePirce;
+        this.createTime = createTime;
+    }
+
+    public String getVegetTableDes() {
+        return vegetTableDes;
+    }
+
+    public void setVegetTableDes(String vegetTableDes) {
+        this.vegetTableDes = vegetTableDes;
     }
 
     public String getCreateTime() {

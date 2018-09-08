@@ -19,9 +19,7 @@ public class MyDataBase extends SQLiteOpenHelper {
     private final String CREATE_TABLE_ORDER = "create table if not exists orders(" +
             "orderNo varchar PRIMARY KEY," +
             "userNo varchar," +
-            "menuNo varchar," +
-            "orderNum int," +
-            "orderPrce int," +
+            "buyNo varchar," +
             "createTime varchar);";
 
     private final String CREATE_TABLE_COMMENT = "create table if not exists comment(" +
@@ -34,8 +32,19 @@ public class MyDataBase extends SQLiteOpenHelper {
     private final String CREATE_TABLE_MENU = "create table if not exists menu(" +
             "vegetTableNo varchar PRIMARY KEY," +
             "vegetTableName varchar," +
+            "vegetTableDes varchar," +
             "vegetTablePic varchar," +
             "vegetTablePirce int," +
+            "createTime varchar);";
+
+    private final String CREATE_TABLE_ORDER_DETAILS = "create table if not exists order_details(" +
+            "orderDetailsNo varchar PRIMARY KEY," +
+            "buyNo varchar," +
+            "menuNo varchar," +
+            "menuName varchar," +
+            "menuPic varchar," +
+            "menuPrice int," +
+            "menuNum int,"+
             "createTime varchar);";
 
     private final String INSERT_ADMIN = "insert into user(userNo,userName,userPsd,userEmail) values('UN0000000001','admin','admin','admin@admin.com')";
@@ -44,16 +53,13 @@ public class MyDataBase extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
-    public MyDataBase(Context context) {
-        super(context, "takeaway", null, 1);
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_USER);
         db.execSQL(CREATE_TABLE_MENU);
         db.execSQL(CREATE_TABLE_ORDER);
         db.execSQL(CREATE_TABLE_COMMENT);
+        db.execSQL(CREATE_TABLE_ORDER_DETAILS);
         db.execSQL(INSERT_ADMIN);
     }
 

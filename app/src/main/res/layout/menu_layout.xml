@@ -13,10 +13,12 @@
     </ListView>
 
     <LinearLayout
+        android:id="@+id/container_buy"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#cccfff"
         android:orientation="horizontal"
+        android:visibility="gone"
         >
         <ImageView
             android:layout_width="50dp"
