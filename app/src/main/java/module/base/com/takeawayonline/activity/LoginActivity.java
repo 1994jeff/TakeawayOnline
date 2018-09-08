@@ -51,7 +51,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 startActivity(new Intent(this,RegisterActivity.class));
                 break;
             case R.id.forgetPsd:
-                startActivity(new Intent(this,RegisterActivity.class));
+                startActivity(new Intent(this,ForgetActivity.class));
                 break;
         }
     }
@@ -74,7 +74,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         boolean flag = SystemUtils.login(this,userNameString,userPsdString);
 
         if(flag){
-            startActivity(new Intent(this,MainActivity.class));
+            if(SystemUtils.isIsAdminLogin()){
+                startActivity(new Intent(this,MainActivity.class));
+            }else {
+                startActivity(new Intent(this,MainActivity.class));
+            }
         }else {
             showToastShort("用户名或密码错误");
         }

@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import module.base.com.takeawayonline.R;
 import module.base.com.takeawayonline.base.BaseActivity;
+import module.base.com.takeawayonline.fragment.MenuFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -24,6 +25,6 @@ public class MainActivity extends BaseActivity {
         mMenu = (TextView) findViewById(R.id.menu);
         mOrder = (TextView) findViewById(R.id.order);
         mComment = (TextView) findViewById(R.id.comment);
-
+        switchFragment(new MenuFragment());
     }
 }

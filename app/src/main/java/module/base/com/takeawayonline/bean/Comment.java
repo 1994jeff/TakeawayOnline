@@ -12,4 +12,51 @@ public class Comment {
     private String commentContent;
     private String createTime;
 
+    public Comment(String commentNo, String userNo, String menuNo, String commentContent, String createTime) {
+        this.commentNo = commentNo;
+        this.userNo = userNo;
+        this.menuNo = menuNo;
+        this.commentContent = commentContent;
+        this.createTime = createTime;
+    }
+
+    public String getCommentNo() {
+        return commentNo;
+    }
+
+    public void setCommentNo(String commentNo) {
+        this.commentNo = commentNo;
+    }
+
+    public String getUserNo() {
+        return userNo;
+    }
+
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
+    }
+
+    public String getMenuNo() {
+        return menuNo;
+    }
+
+    public void setMenuNo(String menuNo) {
+        this.menuNo = menuNo;
+    }
+
+    public String getCommentContent() {
+        return commentContent;
+    }
+
+    public void setCommentContent(String commentContent) {
+        this.commentContent = commentContent;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 }

@@ -41,7 +41,7 @@ public class ForgetActivity extends BaseActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.reset:
-
+                submit();
                 break;
             case R.id.back:
 

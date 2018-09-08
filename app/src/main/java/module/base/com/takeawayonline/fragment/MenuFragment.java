@@ -2,6 +2,7 @@ package module.base.com.takeawayonline.fragment;
 
 import android.view.View;
 
+import module.base.com.takeawayonline.R;
 import module.base.com.takeawayonline.base.BaseFragment;
 
 /**
@@ -12,7 +13,7 @@ public class MenuFragment extends BaseFragment {
 
     @Override
     protected int getFragmentLayout() {
-        return 0;
+        return R.layout.menu_layout;
     }
 
     @Override

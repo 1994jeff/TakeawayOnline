@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:singleLine="true"
-        android:hint="密码"/>
+        android:hint="用户名"/>
 
     <EditText
         android:id="@+id/userEmail"

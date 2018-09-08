@@ -1,7 +1,11 @@
 package module.base.com.takeawayonline.activity;
 
+import android.content.Context;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +13,8 @@ import android.widget.Toast;
 
 import module.base.com.takeawayonline.R;
 import module.base.com.takeawayonline.base.BaseActivity;
+import module.base.com.takeawayonline.data.MyDataBase;
+import module.base.com.takeawayonline.logic.DatabaseUtil;
 import module.base.com.takeawayonline.logic.SystemUtils;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
@@ -74,7 +80,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         if(flag){
             showToastShort("注册成功");
         }else {
-            showToastShort("注册失败");
+            showToastShort("注册失败，用户已存在");
         }
     }
+
 }
