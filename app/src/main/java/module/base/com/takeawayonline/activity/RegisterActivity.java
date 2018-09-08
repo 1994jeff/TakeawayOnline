@@ -1,57 +1,50 @@
 package module.base.com.takeawayonline.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.UserHandle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import module.base.com.takeawayonline.R;
 import module.base.com.takeawayonline.base.BaseActivity;
 import module.base.com.takeawayonline.logic.SystemUtils;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText mUserName;
     private EditText mUserPsd;
-    private Button mLogin;
+    private EditText mUserMail;
+    private Button mBack;
     private Button mRegister;
-    private TextView mForgetPsd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
         initView();
     }
 
     private void initView() {
         mUserName = (EditText) findViewById(R.id.userName);
         mUserPsd = (EditText) findViewById(R.id.userPsd);
-        mLogin = (Button) findViewById(R.id.login);
+        mUserMail = (EditText) findViewById(R.id.userMail);
+        mBack = (Button) findViewById(R.id.back);
         mRegister = (Button) findViewById(R.id.register);
-        mForgetPsd = (TextView) findViewById(R.id.forgetPsd);
 
-        mLogin.setOnClickListener(this);
+        mBack.setOnClickListener(this);
         mRegister.setOnClickListener(this);
-        mForgetPsd.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.login:
-                submit();
+            case R.id.back:
+                onBackPressed();
                 break;
             case R.id.register:
-                startActivity(new Intent(this,RegisterActivity.class));
-                break;
-            case R.id.forgetPsd:
-                startActivity(new Intent(this,RegisterActivity.class));
+                submit();
                 break;
         }
     }
@@ -70,13 +63,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             return;
         }
 
-        // TODO validate success, do something
-        boolean flag = SystemUtils.login(this,userNameString,userPsdString);
+        String userMailString = mUserMail.getText().toString().trim();
+        if (TextUtils.isEmpty(userMailString)) {
+            Toast.makeText(this, "请输入邮箱", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        // TODO validate success, do something
+        boolean flag = SystemUtils.register(this,userNameString,userPsdString,userMailString);
         if(flag){
-            startActivity(new Intent(this,MainActivity.class));
+            showToastShort("注册成功");
         }else {
-            showToastShort("用户名或密码错误");
+            showToastShort("注册失败");
         }
     }
 }
