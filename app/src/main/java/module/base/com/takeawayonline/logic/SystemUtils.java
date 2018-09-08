@@ -2,6 +2,9 @@ package module.base.com.takeawayonline.logic;
 
 import android.content.Context;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import module.base.com.takeawayonline.activity.RegisterActivity;
 
 /**
@@ -28,5 +31,9 @@ public class SystemUtils {
         return true;
     }
 
+    public static String getNo(String preStr){
+        String time = new SimpleDateFormat("MMDDhhmmss").format(new Date());
+      return  preStr+time;
+    }
 
 }

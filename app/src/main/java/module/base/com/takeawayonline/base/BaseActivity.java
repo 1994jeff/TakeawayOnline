@@ -1,8 +1,11 @@
 package module.base.com.takeawayonline.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import module.base.com.takeawayonline.R;
 
 /**
  * Created by jfdeng on 18-9-4.
@@ -29,5 +32,11 @@ public class BaseActivity extends AppCompatActivity{
 
     public void showToastLong(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
+    }
+
+    public void switchFragment(BaseFragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container,fragment);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

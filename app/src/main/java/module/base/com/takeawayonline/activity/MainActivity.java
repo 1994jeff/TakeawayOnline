@@ -9,7 +9,6 @@ import module.base.com.takeawayonline.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
-    private ViewPager mViewPager;
     private TextView mMenu;
     private TextView mOrder;
     private TextView mComment;
@@ -22,9 +21,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
-        mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mMenu = (TextView) findViewById(R.id.menu);
         mOrder = (TextView) findViewById(R.id.order);
         mComment = (TextView) findViewById(R.id.comment);
+
     }
 }
