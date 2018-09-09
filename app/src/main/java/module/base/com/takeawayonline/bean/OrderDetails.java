@@ -14,6 +14,9 @@ public class OrderDetails {
     private String menuName;
     private String menuPic;
     private String createTime;
+    private String userNo;
+    private String userName;
+    private String comment;
 
     public OrderDetails(String orderDetailsNo, String buyNo, String menuNo, String menuNum, String menuPrice, String menuName, String menuPic) {
         this.orderDetailsNo = orderDetailsNo;
@@ -25,7 +28,31 @@ public class OrderDetails {
         this.menuPic = menuPic;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     public OrderDetails() {
+    }
+
+    public String getUserNo() {
+        return userNo;
+    }
+
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getOrderDetailsNo() {
@@ -90,5 +117,22 @@ public class OrderDetails {
 
     public void setMenuPic(String menuPic) {
         this.menuPic = menuPic;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDetails{" +
+                "orderDetailsNo='" + orderDetailsNo + '\'' +
+                ", buyNo='" + buyNo + '\'' +
+                ", menuNo='" + menuNo + '\'' +
+                ", menuNum='" + menuNum + '\'' +
+                ", menuPrice='" + menuPrice + '\'' +
+                ", menuName='" + menuName + '\'' +
+                ", menuPic='" + menuPic + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", userNo='" + userNo + '\'' +
+                ", userName='" + userName + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
     }
 }

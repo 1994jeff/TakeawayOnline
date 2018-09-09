@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="left|center_vertical">
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:src="@mipmap/order"
+            android:layout_gravity="top"
+            android:layout_marginRight="4dp"/>
+        <TextView
+            android:id="@+id/commentContent"
+            android:layout_width="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content"
+            android:text="不错不错不错不错不错不错不错不错不错不错不错不错"
+            android:textSize="22dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="left|center_vertical"
+        android:layout_marginLeft="2dp">
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="38dp"
+            android:src="@mipmap/date"
+            android:layout_gravity="top"
+            android:layout_marginRight="4dp"/>
+        <TextView
+            android:id="@+id/order_time"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:text="2018-09-10 10:32:32"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="left|center_vertical">
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:src="@mipmap/order"
+            android:layout_gravity="top"
+            android:layout_marginRight="4dp"/>
+        <TextView
+            android:id="@+id/order_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="红烧肉1份，红烧排骨2份，米饭3份"
+            android:textSize="18dp"/>
+    </LinearLayout>
+
+</LinearLayout>

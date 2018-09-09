@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import module.base.com.takeawayonline.R;
 import module.base.com.takeawayonline.base.BaseActivity;
+import module.base.com.takeawayonline.logic.CacheUtil;
 import module.base.com.takeawayonline.logic.SystemUtils;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {

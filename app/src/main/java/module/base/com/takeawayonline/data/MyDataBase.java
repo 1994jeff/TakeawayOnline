@@ -27,7 +27,9 @@ public class MyDataBase extends SQLiteOpenHelper {
             "userNo varchar," +
             "menuNo varchar," +
             "commentContent varchar," +
-            "createTime varchar);";
+            "createTime varchar,"+
+            "menuDes varchar,"+
+            "userName varchar);";
 
     private final String CREATE_TABLE_MENU = "create table if not exists menu(" +
             "vegetTableNo varchar PRIMARY KEY," +
@@ -40,9 +42,12 @@ public class MyDataBase extends SQLiteOpenHelper {
     private final String CREATE_TABLE_ORDER_DETAILS = "create table if not exists order_details(" +
             "orderDetailsNo varchar PRIMARY KEY," +
             "buyNo varchar," +
+            "userNo varchar," +
+            "userName varchar," +
             "menuNo varchar," +
             "menuName varchar," +
             "menuPic varchar," +
+            "comment varchar," +
             "menuPrice int," +
             "menuNum int,"+
             "createTime varchar);";

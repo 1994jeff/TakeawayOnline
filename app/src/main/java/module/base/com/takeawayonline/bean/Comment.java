@@ -8,9 +8,11 @@ public class Comment {
 
     private String commentNo;
     private String userNo;
+    private String userName;
     private String menuNo;
     private String commentContent;
     private String createTime;
+    private String menuDes;
 
     public Comment(String commentNo, String userNo, String menuNo, String commentContent, String createTime) {
         this.commentNo = commentNo;
@@ -18,6 +20,22 @@ public class Comment {
         this.menuNo = menuNo;
         this.commentContent = commentContent;
         this.createTime = createTime;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getMenuDes() {
+        return menuDes;
+    }
+
+    public void setMenuDes(String menuDes) {
+        this.menuDes = menuDes;
     }
 
     public String getCommentNo() {
@@ -58,5 +76,18 @@ public class Comment {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentNo='" + commentNo + '\'' +
+                ", userNo='" + userNo + '\'' +
+                ", userName='" + userName + '\'' +
+                ", menuNo='" + menuNo + '\'' +
+                ", commentContent='" + commentContent + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", menuDes='" + menuDes + '\'' +
+                '}';
     }
 }

@@ -55,6 +55,8 @@ public class MenuFragment extends BaseFragment implements MenuAdapter.PriceChang
                     boolean flag = SystemUtils.createOrderDetails(getActivity(),buyStatus,menuAdapter.getData());
                     if(flag){
                         ((MainActivity)getActivity()).showToastShort("结算成功");
+                        menuAdapter.clearStatus();
+                        containerBuy.setVisibility(View.GONE);
                     }else {
                         ((MainActivity)getActivity()).showToastShort("结算失败");
                     }
@@ -67,18 +69,17 @@ public class MenuFragment extends BaseFragment implements MenuAdapter.PriceChang
 
     private List<Menu> getMenuData() {
         List<Menu> list = new ArrayList<>();
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",17,"20"));
+        list.add(new Menu("M100001","凤爪","美味的红烧肉","www.baidu.com",22,"20"));
         list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",15,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",10,"20"));
+        list.add(new Menu("M100001","红烧排骨","美味的红烧肉","www.baidu.com",25,"20"));
+        list.add(new Menu("M100001","炖土豆","美味的红烧肉","www.baidu.com",12,"20"));
+        list.add(new Menu("M100001","辣椒炒肉","美味的红烧肉","www.baidu.com",18,"20"));
+        list.add(new Menu("M100001","白斩鸡","美味的红烧肉","www.baidu.com",26,"20"));
+        list.add(new Menu("M100001","北京烤鸭","美味的红烧肉","www.baidu.com",30,"20"));
+        list.add(new Menu("M100001","冬瓜浓汤","美味的红烧肉","www.baidu.com",10,"20"));
+        list.add(new Menu("M100001","鸡胸肉","美味的红烧肉","www.baidu.com",16,"20"));
+        list.add(new Menu("M100001","烧饼","美味的红烧肉","www.baidu.com",5,"20"));
+        list.add(new Menu("M100001","米饭","美味的红烧肉","www.baidu.com",1,"20"));
         return list;
     }
 

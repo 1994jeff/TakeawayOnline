@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import module.base.com.takeawayonline.R;
+import module.base.com.takeawayonline.bean.CommentStatus;
 import module.base.com.takeawayonline.bean.OrderDetails;
 
 /**
@@ -20,10 +21,16 @@ public class OrderAdapter extends BaseAdapter {
 
     List<List<OrderDetails>> list;
     Context mContext;
+    CommentStatus commentStatus;
 
     public OrderAdapter(Context context, List<List<OrderDetails>> list) {
         this.mContext = context;
         this.list = list;
+        commentStatus = new CommentStatus(list.size());
+    }
+
+    public CommentStatus getCommentStatus(){
+        return commentStatus;
     }
 
     @Override
@@ -52,10 +59,26 @@ public class OrderAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-//        OrderDetails orderDetails = list.get(position);
-
-//        holder.mOrderDetails.setText();
+        List<OrderDetails> orderDetails = list.get(position);
+        StringBuilder stringBuilder = new StringBuilder();
+        int price = 0;
+        for (OrderDetails orderDetail: orderDetails){
+            stringBuilder.append(orderDetail.getMenuName()).append(orderDetail.getMenuNum())
+                    .append("份,");
+            price+=Integer.valueOf(orderDetail.getMenuPrice())*Integer.valueOf(orderDetail.getMenuNum());
+        }
+        commentStatus.des[position] = stringBuilder.toString().substring(0,stringBuilder.length()-1);
+        commentStatus.buyNo[position] = orderDetails.get(0).getBuyNo();
+        holder.mOrderDetails.setText(commentStatus.des[position]);
+        holder.mOrderPrice.setText(price+"");
+        holder.mOrderTime.setText(orderDetails.get(0).getCreateTime());
         return convertView;
+    }
+
+    public void swapData(List<List<OrderDetails>> listCom) {
+        this.list = listCom;
+        commentStatus = new CommentStatus(list.size());
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder {

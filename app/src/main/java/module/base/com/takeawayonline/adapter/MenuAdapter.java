@@ -30,6 +30,12 @@ public class MenuAdapter extends BaseAdapter{
         return list;
     }
 
+    public void clearStatus() {
+        priceAll = 0;
+        buyStatus = new BuyStatus(list.size());
+        notifyDataSetChanged();
+    }
+
     public interface PriceChangeListener{
         void onPriceChange(int price,BuyStatus buyStatus);
     }
