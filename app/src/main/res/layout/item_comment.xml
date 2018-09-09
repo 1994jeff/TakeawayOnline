@@ -9,11 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="left|center_vertical">
+        android:gravity="left|center_vertical"
+        android:layout_marginLeft="4dp">
         <ImageView
-            android:layout_width="34dp"
+            android:layout_width="28dp"
             android:layout_height="34dp"
-            android:src="@mipmap/order"
+            android:src="@mipmap/comment"
             android:layout_gravity="top"
             android:layout_marginRight="4dp"/>
         <TextView

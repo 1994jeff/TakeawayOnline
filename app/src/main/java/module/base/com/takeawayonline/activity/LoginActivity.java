@@ -80,6 +80,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             }else {
                 startActivity(new Intent(this,MainActivity.class));
             }
+            finish();
         }else {
             showToastShort("用户名或密码错误");
         }

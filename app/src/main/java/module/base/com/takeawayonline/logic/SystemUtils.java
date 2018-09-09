@@ -84,9 +84,15 @@ public class SystemUtils {
 
     public static boolean forgetPsd(Context context, String psdString, String userMailString,String userNameString) {
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
-        String sql = "update user set userPsd='"+psdString+"' where userName='"+userNameString+"' and userEmail='"+userMailString+"'";
+//        String sql = "update user set userPsd='"+psdString+"' where userName='"+userNameString+"' and userEmail='"+userMailString+"'";
         try {
-            database.execSQL(sql);
+//            database.execSQL(sql);
+            ContentValues values = new ContentValues();
+            values.put("userPsd",psdString);
+            int effect = database.update("user",values,"userName=? and userEmail=?",new String[]{userNameString,userMailString});
+            if(effect>0){
+                return true;
+            }
         } catch (Exception e) {
             return false;
         } finally {
@@ -94,7 +100,7 @@ public class SystemUtils {
                 database.close();
             }
         }
-        return true;
+        return false;
     }
 
     public static String getNo(String preStr){
