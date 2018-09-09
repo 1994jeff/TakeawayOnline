@@ -61,8 +61,8 @@ public class OrderFragment extends BaseFragment {
     }
 
     private void initList() {
-        listCom =  SystemUtils.getUserCommentOrderDetails(getActivity());//已评论
-        listUnCom =  SystemUtils.getUserUnCommentOrderDetails(getActivity());//未评论
+        listCom =  SystemUtils.getUserCommentOrderDetails(getActivity(),!SystemUtils.isIsAdminLogin());//已评论
+        listUnCom =  SystemUtils.getUserUnCommentOrderDetails(getActivity(),!SystemUtils.isIsAdminLogin());//未评论
         if(listCom==null || listCom.size()<=0){
             listCom = new ArrayList<>();
             orderAdapterCom = new OrderAdapter(getActivity(),listCom);
@@ -82,7 +82,11 @@ public class OrderFragment extends BaseFragment {
         mListUncomment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showDiaLogCommet(position);
+                if(!SystemUtils.isIsAdminLogin()){
+                    showDiaLogCommet(position);
+                }else {
+                    ((BaseActivity)getActivity()).showToastShort("不能评论他人订单!");
+                }
             }
         });
     }

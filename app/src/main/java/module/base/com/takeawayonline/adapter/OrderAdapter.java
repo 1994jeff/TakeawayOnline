@@ -12,6 +12,7 @@ import java.util.List;
 import module.base.com.takeawayonline.R;
 import module.base.com.takeawayonline.bean.CommentStatus;
 import module.base.com.takeawayonline.bean.OrderDetails;
+import module.base.com.takeawayonline.logic.SystemUtils;
 
 /**
  * Created by jeff on 18-9-8.
@@ -72,6 +73,12 @@ public class OrderAdapter extends BaseAdapter {
         holder.mOrderDetails.setText(commentStatus.des[position]);
         holder.mOrderPrice.setText(price+"");
         holder.mOrderTime.setText(orderDetails.get(0).getCreateTime());
+        if(SystemUtils.isIsAdminLogin()){
+            holder.mUserName.setVisibility(View.VISIBLE);
+            holder.mUserName.setText(orderDetails.get(0).getUserName());
+        }else {
+            holder.mUserName.setVisibility(View.GONE);
+        }
         return convertView;
     }
 
@@ -86,12 +93,14 @@ public class OrderAdapter extends BaseAdapter {
         public TextView mOrderDetails;
         public TextView mOrderTime;
         public TextView mOrderPrice;
+        public TextView mUserName;
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
             this.mOrderDetails = (TextView) rootView.findViewById(R.id.order_details);
             this.mOrderTime = (TextView) rootView.findViewById(R.id.order_time);
             this.mOrderPrice = (TextView) rootView.findViewById(R.id.order_price);
+            this.mUserName = (TextView) rootView.findViewById(R.id.userName);
         }
 
     }

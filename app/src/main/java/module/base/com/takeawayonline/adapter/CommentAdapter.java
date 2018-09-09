@@ -11,6 +11,7 @@ import java.util.List;
 
 import module.base.com.takeawayonline.R;
 import module.base.com.takeawayonline.bean.Comment;
+import module.base.com.takeawayonline.logic.SystemUtils;
 
 /**
  * Created by jeff on 18-9-9.
@@ -55,6 +56,12 @@ public class CommentAdapter extends BaseAdapter {
         holder.mCommentContent.setText(comment.getCommentContent());
         holder.mOrderTime.setText(comment.getCreateTime());
         holder.mOrderDetails.setText(comment.getMenuDes());
+        if(SystemUtils.isIsAdminLogin()){
+            holder.mUserName.setVisibility(View.VISIBLE);
+            holder.mUserName.setText(comment.getUserName());
+        }else {
+            holder.mUserName.setVisibility(View.GONE);
+        }
         return convertView;
     }
 
@@ -63,12 +70,14 @@ public class CommentAdapter extends BaseAdapter {
         public TextView mCommentContent;
         public TextView mOrderTime;
         public TextView mOrderDetails;
+        public TextView mUserName;
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
             this.mCommentContent = (TextView) rootView.findViewById(R.id.commentContent);
             this.mOrderTime = (TextView) rootView.findViewById(R.id.order_time);
             this.mOrderDetails = (TextView) rootView.findViewById(R.id.order_details);
+            this.mUserName = (TextView) rootView.findViewById(R.id.userName);
         }
 
     }

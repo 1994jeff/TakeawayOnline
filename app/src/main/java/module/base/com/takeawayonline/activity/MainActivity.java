@@ -10,6 +10,7 @@ import module.base.com.takeawayonline.base.BaseActivity;
 import module.base.com.takeawayonline.fragment.CommentFragment;
 import module.base.com.takeawayonline.fragment.MenuFragment;
 import module.base.com.takeawayonline.fragment.OrderFragment;
+import module.base.com.takeawayonline.logic.SystemUtils;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -28,7 +29,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mMenu = (TextView) findViewById(R.id.menu);
         mOrder = (TextView) findViewById(R.id.order);
         mComment = (TextView) findViewById(R.id.comment);
-        switchFragment(new MenuFragment());
+
+        if(!SystemUtils.isIsAdminLogin()){
+            switchFragment(new MenuFragment());
+        }else {
+            switchFragment(new OrderFragment());
+            mMenu.setVisibility(View.GONE);
+            mOrder.setText("所有订单");
+            mComment.setText("所有评论");
+        }
 
         mMenu.setOnClickListener(this);
         mOrder.setOnClickListener(this);

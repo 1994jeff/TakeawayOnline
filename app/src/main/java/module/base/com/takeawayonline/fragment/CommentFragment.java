@@ -38,11 +38,10 @@ public class CommentFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        List<Comment> list = SystemUtils.getCommentByUser();
+        List<Comment> list = SystemUtils.getCommentByUser(!SystemUtils.isIsAdminLogin());
         if(list==null||list.size()<=0){
             list = new ArrayList<>();
         }
-        Log.i("jeff",list.size()+"");
         adapter = new CommentAdapter(getActivity(),list);
         mCommentListView.setAdapter(adapter);
     }

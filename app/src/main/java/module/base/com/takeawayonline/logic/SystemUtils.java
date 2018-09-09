@@ -194,7 +194,7 @@ public class SystemUtils {
     }
 
     public static List<List<OrderDetails>> getUserOrderDetails(Context context){
-        List<OrderDetails> list = getOrderDetailsByGroupList(context,true);
+        List<OrderDetails> list = getOrderDetailsByGroupList(context,false);
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
         List<List<OrderDetails>> listUser = new ArrayList<>();
         List<OrderDetails> listBuyNo;
@@ -242,8 +242,8 @@ public class SystemUtils {
         return listUser;
     }
 
-    public static List<List<OrderDetails>> getUserCommentOrderDetails(Context context){
-        List<OrderDetails> list = getOrderDetailsByGroupList(context,true);
+    public static List<List<OrderDetails>> getUserCommentOrderDetails(Context context,boolean whereCloum){
+        List<OrderDetails> list = getOrderDetailsByGroupList(context,whereCloum);
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
         List<List<OrderDetails>> listUser = new ArrayList<>();
         List<OrderDetails> listBuyNo;
@@ -295,8 +295,8 @@ public class SystemUtils {
         return listUser;
     }
 
-    public static List<List<OrderDetails>> getUserUnCommentOrderDetails(Context context){
-        List<OrderDetails> list = getOrderDetailsByGroupList(context,true);
+    public static List<List<OrderDetails>> getUserUnCommentOrderDetails(Context context,boolean whereCloum){
+        List<OrderDetails> list = getOrderDetailsByGroupList(context,whereCloum);
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
         List<List<OrderDetails>> listUser = new ArrayList<>();
         List<OrderDetails> listBuyNo;
@@ -375,12 +375,19 @@ public class SystemUtils {
         return true;
     }
 
-    public static List<Comment> getCommentByUser() {
+    public static List<Comment> getCommentByUser(boolean whereUser) {
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
         List<Comment> commentList = new ArrayList<>();
-        String sql = "select * from comment where userNo=?";
+        String sql = "";
+        String[] whereArgs = null;
+        if(whereUser){
+            sql = "select * from comment where userNo=?";
+            whereArgs = new String[]{CacheUtil.getInstance().getCurrentUser().getUserNo()};
+        }else {
+            sql = "select * from comment";
+        }
         try {
-            Cursor cursor = database.rawQuery(sql,new String[]{CacheUtil.getInstance().getCurrentUser().getUserNo()});
+            Cursor cursor = database.rawQuery(sql,whereArgs);
             if(cursor!=null){
                 Comment comment = null;
                 while (cursor.moveToNext()){

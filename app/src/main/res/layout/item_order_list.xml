@@ -53,6 +53,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="right">
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="center|left"
+                android:textSize="26dp"
+                android:visibility="gone"
+                android:layout_marginLeft="4dp"
+                android:drawablePadding="6dp"
+                android:drawableLeft="@mipmap/user"
+                android:text="刘强"/>
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
