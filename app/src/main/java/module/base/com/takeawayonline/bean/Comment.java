@@ -9,7 +9,7 @@ public class Comment {
     private String commentNo;
     private String userNo;
     private String userName;
-    private String menuNo;
+    private String menuNo;//此处数据库存储的是buyNo
     private String commentContent;
     private String createTime;
     private String menuDes;

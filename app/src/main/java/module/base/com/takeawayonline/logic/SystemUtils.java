@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,20 +16,28 @@ import module.base.com.takeawayonline.bean.Comment;
 import module.base.com.takeawayonline.bean.Menu;
 import module.base.com.takeawayonline.bean.OrderDetails;
 import module.base.com.takeawayonline.bean.User;
-import module.base.com.takeawayonline.data.MyDataBase;
 
 /**
- * Created by jeff on 18-9-8.
+ * 用户数据库逻辑操作辅助类
  */
 
 public class SystemUtils {
 
+    //缓存登录用户状态，是否为管理员
     private static boolean isAdminLogin;
 
+    //得到登录用户状态
     public static boolean isIsAdminLogin() {
         return isAdminLogin;
     }
 
+    /**
+     * 登录逻辑
+     * @param context
+     * @param userNameString
+     * @param userPsdString
+     * @return
+     */
     public static boolean login(Context context, String userNameString, String userPsdString) {
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
         String sql = "select * from user where userName=? and userPsd=?";
@@ -68,6 +74,14 @@ public class SystemUtils {
         return false;
     }
 
+    /**
+     * 注册逻辑
+     * @param context
+     * @param userNameString
+     * @param userPsdString
+     * @param userMailString
+     * @return
+     */
     public static boolean register(Context context, String userNameString, String userPsdString, String userMailString) {
         SQLiteDatabase database = DatabaseUtil.getInstance().getWriteDataBase();
         try {
@@ -82,14 +96,22 @@ public class SystemUtils {
         return true;
     }
 
+    /**
+     * 重置密码逻辑
+     * @param context
+     * @param psdString
+     * @param userMailString
+     * @param userNameString
+     * @return
+     */
     public static boolean forgetPsd(Context context, String psdString, String userMailString,String userNameString) {
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
-//        String sql = "update user set userPsd='"+psdString+"' where userName='"+userNameString+"' and userEmail='"+userMailString+"'";
         try {
-//            database.execSQL(sql);
             ContentValues values = new ContentValues();
             values.put("userPsd",psdString);
+            //修改用户密码
             int effect = database.update("user",values,"userName=? and userEmail=?",new String[]{userNameString,userMailString});
+            //当受影响用户数小于等于0即说明没有一条数据被修改，用户输入参数有误，返回false，大于0即修改成功
             if(effect>0){
                 return true;
             }
@@ -103,16 +125,34 @@ public class SystemUtils {
         return false;
     }
 
+    /**
+     * 获取主键字段No辅助方法，避免出现重复
+     * @param preStr
+     * @return
+     */
     public static String getNo(String preStr){
         String time = new SimpleDateFormat("MMDDhhmmss").format(new Date());
       return  preStr+time;
     }
 
+    /**
+     * 获取主键字段No辅助方法，避免出现重复
+     * @param preStr
+     * @param index
+     * @return
+     */
     public static String getNoByOrder(String preStr,int index){
         String time = new SimpleDateFormat("MMDDhhmmss").format(new Date())+index;
         return  preStr+time;
     }
 
+    /**
+     * 将用户下单数据存入数据库order_details表中
+     * @param context
+     * @param buyStatus
+     * @param data
+     * @return
+     */
     public static boolean createOrderDetails(Context context, BuyStatus buyStatus, List<Menu> data) {
         SQLiteDatabase database = DatabaseUtil.getInstance().getWriteDataBase();
         String buyNo = getNo("BN");
@@ -144,15 +184,28 @@ public class SystemUtils {
         return true;
     }
 
+    /**
+     * 获取日期时间字符串
+     * @param date
+     * @return
+     */
     private static String getDateStr(Date date) {
         return new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
     }
 
-
+    /**
+     * 获取所有的订单数据
+     * @param context
+     * @param whereUser 是否使用where约束语句查找
+     * @return
+     * 因为一个订单中会包含多个菜，每个菜对应自己被点的数量
+     * 所依使用buyNo标识几条数据是否为同一次下单的，buyNo相同则为同一单，否则不是
+     */
     public static List<OrderDetails> getOrderDetailsByGroupList(Context context,boolean whereUser){
         List<OrderDetails> list = new ArrayList<>();
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
         String sql = "";
+        //使用约束语句查找，返回当前登录用户的订单数据，false则不使用约束，返回所有用户的订单数据
         if(whereUser){
             sql = "select * from order_details where userNo='"+CacheUtil.getInstance().getCurrentUser().getUserNo()+"' group by buyNo";
         }else {
@@ -242,6 +295,12 @@ public class SystemUtils {
         return listUser;
     }
 
+    /**
+     * 获取以已评论的订单信息
+     * @param context
+     * @param whereCloum 是否使用约束
+     * @return
+     */
     public static List<List<OrderDetails>> getUserCommentOrderDetails(Context context,boolean whereCloum){
         List<OrderDetails> list = getOrderDetailsByGroupList(context,whereCloum);
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
@@ -295,6 +354,12 @@ public class SystemUtils {
         return listUser;
     }
 
+    /**
+     * 获取未评论的所有订单信息
+     * @param context
+     * @param whereCloum 是否使用where约束查询
+     * @return
+     */
     public static List<List<OrderDetails>> getUserUnCommentOrderDetails(Context context,boolean whereCloum){
         List<OrderDetails> list = getOrderDetailsByGroupList(context,whereCloum);
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
@@ -350,7 +415,6 @@ public class SystemUtils {
 
     /**
      * 添加评论
-     *
      * @param des
      * @param buyNo
      * @param comment
@@ -375,6 +439,11 @@ public class SystemUtils {
         return true;
     }
 
+    /**
+     * 获取用户评论
+     * @param whereUser 是否使用约束查询
+     * @return
+     */
     public static List<Comment> getCommentByUser(boolean whereUser) {
         SQLiteDatabase database = DatabaseUtil.getInstance().getReadDataBase();
         List<Comment> commentList = new ArrayList<>();

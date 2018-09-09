@@ -14,7 +14,9 @@ import module.base.com.takeawayonline.R;
 import module.base.com.takeawayonline.base.BaseActivity;
 import module.base.com.takeawayonline.logic.CacheUtil;
 import module.base.com.takeawayonline.logic.SystemUtils;
-
+/**
+ * 登录页面
+ */
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText mUserName;
@@ -71,7 +73,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             return;
         }
 
-        // TODO validate success, do something
+        // 调用登录逻辑
         boolean flag = SystemUtils.login(this,userNameString,userPsdString);
 
         if(flag){

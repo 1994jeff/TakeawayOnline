@@ -3,7 +3,8 @@ package module.base.com.takeawayonline.logic;
 import module.base.com.takeawayonline.bean.User;
 
 /**
- * Created by jeff on 18-9-8.
+ * 缓存辅助类
+ * 用户登录后数据缓存
  */
 
 public class CacheUtil {

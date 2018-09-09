@@ -56,6 +56,7 @@ public class CommentAdapter extends BaseAdapter {
         holder.mCommentContent.setText(comment.getCommentContent());
         holder.mOrderTime.setText(comment.getCreateTime());
         holder.mOrderDetails.setText(comment.getMenuDes());
+        //管理员则显示对应的用户信息，否则隐藏
         if(SystemUtils.isIsAdminLogin()){
             holder.mUserName.setVisibility(View.VISIBLE);
             holder.mUserName.setText(comment.getUserName());

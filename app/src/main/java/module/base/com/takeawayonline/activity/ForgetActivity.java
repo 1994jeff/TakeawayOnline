@@ -11,6 +11,9 @@ import module.base.com.takeawayonline.R;
 import module.base.com.takeawayonline.base.BaseActivity;
 import module.base.com.takeawayonline.logic.SystemUtils;
 
+/**
+ * 重置密码页面
+ */
 public class ForgetActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText mUserEmail;
@@ -69,7 +72,7 @@ public class ForgetActivity extends BaseActivity implements View.OnClickListener
             return;
         }
 
-        // TODO validate success, do something
+        // 调用重置密码逻辑
         boolean flag = SystemUtils.forgetPsd(this,userPsdString,userEmailString,userNameString);
         if(flag){
             showToastShort("重置密码成功，快去登录吧");

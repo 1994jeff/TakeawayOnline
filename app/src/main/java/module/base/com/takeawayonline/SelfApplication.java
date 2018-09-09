@@ -8,6 +8,7 @@ public class SelfApplication extends Application   {
     @Override
     public void onCreate() {
         super.onCreate();
+        //初始化数据库
         DatabaseUtil.getInstance().createDB(this);
     }
 }

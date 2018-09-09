@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by jeff on 18-9-8.
+ * Fragment基类
+ * 所有的Fragment均继承自BaseFragment
  */
-
 public abstract class BaseFragment extends Fragment {
 
     @Nullable
@@ -22,7 +22,9 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
+    //通过抽象方法，继承的fragment必须实现此方法返回fragment的布局资源文件
     protected abstract int getFragmentLayout();
 
+    //通过抽象方法，继承的fragment实例化布局控件
     protected abstract void initFragment(View view);
 }

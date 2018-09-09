@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by jeff on 18-9-8.
+ * 数据库辅助类
  */
 
 public class MyDataBase extends SQLiteOpenHelper {
@@ -15,12 +15,6 @@ public class MyDataBase extends SQLiteOpenHelper {
             "userName varchar unique," +
             "userPsd varchar," +
             "userEmail varchar);";
-
-    private final String CREATE_TABLE_ORDER = "create table if not exists orders(" +
-            "orderNo varchar PRIMARY KEY," +
-            "userNo varchar," +
-            "buyNo varchar," +
-            "createTime varchar);";
 
     private final String CREATE_TABLE_COMMENT = "create table if not exists comment(" +
             "commentNo varchar PRIMARY KEY," +
@@ -60,12 +54,11 @@ public class MyDataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_TABLE_USER);
-        db.execSQL(CREATE_TABLE_MENU);
-        db.execSQL(CREATE_TABLE_ORDER);
-        db.execSQL(CREATE_TABLE_COMMENT);
-        db.execSQL(CREATE_TABLE_ORDER_DETAILS);
-        db.execSQL(INSERT_ADMIN);
+        db.execSQL(CREATE_TABLE_USER);//创建用户表
+//        db.execSQL(CREATE_TABLE_MENU);//创建菜单表
+        db.execSQL(CREATE_TABLE_COMMENT);//创建评论表
+        db.execSQL(CREATE_TABLE_ORDER_DETAILS);//创建用户下单细节表
+        db.execSQL(INSERT_ADMIN);//插入默认管理员用户数据
     }
 
     @Override

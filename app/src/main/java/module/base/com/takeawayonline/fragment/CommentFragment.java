@@ -17,7 +17,7 @@ import module.base.com.takeawayonline.bean.Comment;
 import module.base.com.takeawayonline.logic.SystemUtils;
 
 /**
- * Created by jeff on 18-9-8.
+ * 评论页面.
  */
 
 public class CommentFragment extends BaseFragment {

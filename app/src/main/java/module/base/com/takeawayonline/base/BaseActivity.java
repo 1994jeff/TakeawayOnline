@@ -8,8 +8,8 @@ import android.widget.Toast;
 import module.base.com.takeawayonline.R;
 
 /**
- * Created by jfdeng on 18-9-4.
- * email: jfdeng@grandstream.cn.
+ * activity基类
+ * 所有的activity均继承自BaseActivity
  */
 public class BaseActivity extends AppCompatActivity{
 
@@ -34,6 +34,10 @@ public class BaseActivity extends AppCompatActivity{
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * fragment切换
+     * @param fragment 要切换到的fragment
+     */
     public void switchFragment(BaseFragment fragment){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.container,fragment);

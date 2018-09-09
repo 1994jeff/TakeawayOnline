@@ -7,7 +7,7 @@ import android.util.Log;
 import module.base.com.takeawayonline.data.MyDataBase;
 
 /**
- * Created by jeff on 18-9-8.
+ * SQLite数据库辅助类
  */
 
 public class DatabaseUtil {

@@ -20,7 +20,7 @@ import module.base.com.takeawayonline.bean.Menu;
 import module.base.com.takeawayonline.logic.SystemUtils;
 
 /**
- * Created by jeff on 18-9-8.
+ * 菜单页面
  */
 
 public class MenuFragment extends BaseFragment implements MenuAdapter.PriceChangeListener {

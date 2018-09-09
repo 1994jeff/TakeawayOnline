@@ -73,6 +73,7 @@ public class OrderAdapter extends BaseAdapter {
         holder.mOrderDetails.setText(commentStatus.des[position]);
         holder.mOrderPrice.setText(price+"");
         holder.mOrderTime.setText(orderDetails.get(0).getCreateTime());
+        //管理员则显示对应的用户信息，否则隐藏
         if(SystemUtils.isIsAdminLogin()){
             holder.mUserName.setVisibility(View.VISIBLE);
             holder.mUserName.setText(orderDetails.get(0).getUserName());

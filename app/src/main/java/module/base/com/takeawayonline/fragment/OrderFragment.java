@@ -23,14 +23,14 @@ import module.base.com.takeawayonline.bean.OrderDetails;
 import module.base.com.takeawayonline.logic.SystemUtils;
 
 /**
- * Created by jeff on 18-9-8.
+ * 订单页面
  */
 
 public class OrderFragment extends BaseFragment {
 
-    private ListView mListComment;
+    private ListView mListComment;//已评论list
     private LinearLayout mCommentContainer;
-    private ListView mListUncomment;
+    private ListView mListUncomment;//未评论list
     private LinearLayout mUncommentContainer;
 
     OrderAdapter orderAdapterCom;
@@ -61,27 +61,35 @@ public class OrderFragment extends BaseFragment {
     }
 
     private void initList() {
+        //获取对应的订单数据信息
         listCom =  SystemUtils.getUserCommentOrderDetails(getActivity(),!SystemUtils.isIsAdminLogin());//已评论
         listUnCom =  SystemUtils.getUserUnCommentOrderDetails(getActivity(),!SystemUtils.isIsAdminLogin());//未评论
+
+        //初始化适配器
         if(listCom==null || listCom.size()<=0){
             listCom = new ArrayList<>();
             orderAdapterCom = new OrderAdapter(getActivity(),listCom);
         }else {
             orderAdapterCom = new OrderAdapter(getActivity(),listCom);
         }
+        //绑定适配器
         mListComment.setAdapter(orderAdapterCom);
 
+        //初始化适配器
         if(listUnCom==null || listUnCom.size()<=0){
             listUnCom = new ArrayList<>();
             orderAdapterUnCom = new OrderAdapter(getActivity(),listUnCom);
         }else {
             orderAdapterUnCom = new OrderAdapter(getActivity(),listUnCom);
         }
-
+        //绑定适配器
         mListUncomment.setAdapter(orderAdapterUnCom);
+
+        //设置未评论listview的点击事件
         mListUncomment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //不是admin登录则弹出评论对话框，否则提示没有权限评论
                 if(!SystemUtils.isIsAdminLogin()){
                     showDiaLogCommet(position);
                 }else {
@@ -103,15 +111,18 @@ public class OrderFragment extends BaseFragment {
                 List<OrderDetails> orderDetails = (List<OrderDetails>) orderAdapterUnCom.getItem(position);
                 String buyNo = orderAdapterUnCom.getCommentStatus().buyNo[position];
                 String des = orderAdapterUnCom.getCommentStatus().des[position];
+                //得到对应的buyNo后调用封装的方法评论（评论做的操作有二，一是更新订单信息表的是否评论字段为yes，二是插入一条评论信息到评论表）
                 boolean flag = SystemUtils.comment(buyNo,editText.getText().toString(),des);
                 if(flag){
                     ((BaseActivity)getActivity()).showToastShort("评论成功");
                     if(listUnCom.size()>=position)
                     {
                         listUnCom.remove(position);
+                        //刷新页面list
                         orderAdapterUnCom.notifyDataSetChanged();
                     }
                     listCom.add(orderDetails);
+                    //刷新页面list
                     orderAdapterCom.swapData(listCom);
                 }else {
                     ((BaseActivity)getActivity()).showToastShort("评论失败");
