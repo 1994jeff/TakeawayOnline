@@ -69,17 +69,16 @@ public class MenuFragment extends BaseFragment implements MenuAdapter.PriceChang
 
     private List<Menu> getMenuData() {
         List<Menu> list = new ArrayList<>();
-        list.add(new Menu("M100001","凤爪","美味的红烧肉","www.baidu.com",22,"20"));
-        list.add(new Menu("M100001","红烧肉","美味的红烧肉","www.baidu.com",15,"20"));
-        list.add(new Menu("M100001","红烧排骨","美味的红烧肉","www.baidu.com",25,"20"));
-        list.add(new Menu("M100001","炖土豆","美味的红烧肉","www.baidu.com",12,"20"));
-        list.add(new Menu("M100001","辣椒炒肉","美味的红烧肉","www.baidu.com",18,"20"));
-        list.add(new Menu("M100001","白斩鸡","美味的红烧肉","www.baidu.com",26,"20"));
-        list.add(new Menu("M100001","北京烤鸭","美味的红烧肉","www.baidu.com",30,"20"));
-        list.add(new Menu("M100001","冬瓜浓汤","美味的红烧肉","www.baidu.com",10,"20"));
-        list.add(new Menu("M100001","鸡胸肉","美味的红烧肉","www.baidu.com",16,"20"));
-        list.add(new Menu("M100001","烧饼","美味的红烧肉","www.baidu.com",5,"20"));
-        list.add(new Menu("M100001","米饭","美味的红烧肉","www.baidu.com",1,"20"));
+        list.add(new Menu("M100001","酸辣凤爪","酸辣爽快，美味佳肴","www.baidu.com",22,"20"));
+        list.add(new Menu("M100002","红烧肉","美味的红烧肉","www.baidu.com",15,"20"));
+        list.add(new Menu("M100003","红烧排骨","香嫩可口的排骨","www.baidu.com",25,"20"));
+        list.add(new Menu("M100004","炖土豆","素食主义者的最爱","www.baidu.com",12,"20"));
+        list.add(new Menu("M100005","辣椒炒肉","经典美味，南方烧菜","www.baidu.com",18,"20"));
+        list.add(new Menu("M100006","白斩鸡","美味的地方特色菜","www.baidu.com",26,"20"));
+        list.add(new Menu("M100007","北京烤鸭","著名的美食北京烤鸭","www.baidu.com",30,"20"));
+        list.add(new Menu("M100008","冬瓜浓汤","清热去火的冬瓜汤","www.baidu.com",10,"20"));
+        list.add(new Menu("M100009","鸡胸肉","美味的鸡胸肉","www.baidu.com",16,"20"));
+        list.add(new Menu("M100001","米饭","香甜可口的东北大米","www.baidu.com",1,"20"));
         return list;
     }
 
