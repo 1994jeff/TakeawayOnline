@@ -47,7 +47,7 @@ public class ForgetActivity extends BaseActivity implements View.OnClickListener
                 submit();
                 break;
             case R.id.back:
-
+                onBackPressed();
                 break;
         }
     }
